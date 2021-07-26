@@ -1,0 +1,9 @@
+Package: com.hoangdus.speedster
+Name: Speedster
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: A speed intensifier successor (kinda)
+Maintainer: Hoangdus
+Author: Hoangdus
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

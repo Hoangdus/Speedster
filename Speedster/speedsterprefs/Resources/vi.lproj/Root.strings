@@ -1,0 +1,14 @@
+{
+  "Speed" = "Tốc độ";
+  "Bounce" = "Độ nảy";
+  "Extra" = "Cài đặt thêm";
+  "Screen sleep(←faster|slower→)" = "Tốc độ tắt màn(←nhanh hơn)";
+  "Screen wake" = "Tốc độ bật màn";
+  "Extra extra" = "Cài đặt thêm nữa";
+  "No icons fly" = "Icon k bay vào khi mở khóa";
+  "Respring to apply changes" = "Respring để áp dụng thay đổi";
+  "Respring" = "Respring";
+  "Links" = "Liên kết";
+  "My twitter" = "Twitter của thôi";
+  "Source code" = "Mã nguồn";
+}
