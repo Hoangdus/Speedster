@@ -79,7 +79,7 @@ void preferencesthings(){ //pref
             return %orig;
         }
     }
-    -(double)speedMultiplierForWake{ //screen turn on speed
+    -(double)speedMultiplierForWake{ //screen turn on speed (might be glitchy)
         if(isScreenwakeEnable){
             return Screenwakevalue;
         }else{

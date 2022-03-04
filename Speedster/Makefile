@@ -6,7 +6,7 @@ include /var/theos/makefiles/common.mk
 
 TWEAK_NAME = Speedster
 
-Speedster_FILES = Tweak.x
+Speedster_FILES = Speedster.x
 Speedster_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk
