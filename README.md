@@ -1,3 +1,2 @@
 # Speedster
-Fast as fuck boi.
-A jailbreak tweak.
+Faster iOS animation.
