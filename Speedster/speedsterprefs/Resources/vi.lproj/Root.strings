@@ -1,14 +1,48 @@
-{
-  "Speed" = "Tốc độ";
-  "Bounce" = "Độ nảy";
-  "Extra" = "Cài đặt thêm";
-  "Screen sleep(←faster|slower→)" = "Tốc độ tắt màn(←nhanh hơn)";
-  "Screen wake" = "Tốc độ bật màn";
-  "Extra extra" = "Cài đặt thêm nữa";
-  "No icons fly" = "Icon k bay vào khi mở khóa";
-  "Respring to apply changes" = "Respring để áp dụng thay đổi";
-  "Respring" = "Respring";
-  "Links" = "Liên kết";
-  "My twitter" = "Twitter của thôi";
-  "Source code" = "Mã nguồn";
-}
+
+
+"Bounce" = "Độ nảy";
+
+
+"Buy me a Fanta" = "Mua tôi 1 lon Fanta 🥤";
+
+
+"Extra" = "Cài đặt thêm";
+
+
+"Extra extra" = "Cài đặt thêm nữa";
+
+
+"Icon edit shaking" = "Icon run khi chỉnh vị trí";
+
+
+"Icon unlock fly in" = "Icon bay vào khi mở khóa";
+
+
+"Links" = "Liên kết";
+
+
+"My twitter" = "Twitter của thôi";
+
+
+"Respring" = "Respring";
+
+
+"Respring to apply changes" = "Respring để áp dụng thay đổi";
+
+
+"Screen sleep(←faster|slower→)" = "Tốc độ tắt màn(←nhanh hơn)";
+
+
+"Screen wake" = "Tốc độ bật màn";
+
+
+"Source code" = "Mã nguồn";
+
+
+"Speed" = "Tốc độ";
+
+
+"Switcher homescreen zoom out" = "Icon zoom ra trong đa nghiệm";
+
+
+"Switcher wallpaper zoom out" = "Nền zoom ra trong đa nghiệm";

@@ -24,6 +24,10 @@
   [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://twitter.com/Hoangdev23"]options:@{} completionHandler:nil];
 }
 
+- (void)paypal{
+  [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://www.paypal.com/paypalme/HoangDus"]options:@{} completionHandler:nil];
+}
+
 @end
 
 @implementation SdrHeaderCell
@@ -31,7 +35,7 @@
   self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
 
   if (self) {
-    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(30, 30, self.frame.size.width, 60)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width, 60)];
     title.numberOfLines = 1;
     title.font = [UIFont systemFontOfSize:50];
     title.text = @"Speedster";
@@ -39,7 +43,7 @@
     title.textAlignment = NSTextAlignmentCenter;
     [self addSubview:title];
 
-    UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(30, 85, self.frame.size.width, 30)];
+    UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 85, self.frame.size.width, 30)];
     subtitle.numberOfLines = 1;
     subtitle.font = [UIFont systemFontOfSize:20];
     subtitle.text = @"By Hoangdus";

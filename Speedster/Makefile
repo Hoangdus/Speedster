@@ -1,8 +1,10 @@
 ARCHS = arm64 arm64e
 export DEBUG = 0
 export FINALPACKAGE = 1
+export THEOS_DEVICE_IP = localhost
+export THEOS_DEVICE_PORT=2222
 
-include /var/theos/makefiles/common.mk
+include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Speedster
 

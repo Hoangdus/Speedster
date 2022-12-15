@@ -1,14 +1,48 @@
-{
-  "Speed" = "Speed";
-  "Bounce" = "Bounce";
-  "Extra" = "Extra";
-  "Screen sleep(←faster|slower→)" = "Screen sleep(←faster|slower→)";
-  "Screen wake" = "Screen wake";
-  "Extra extra" = "Extra extra";
-  "No icons fly" = "No icons fly in";
-  "Respring to apply changes" = "Respring to apply changes";
-  "Respring" = "Respring";
-  "Links" = "Links";
-  "My twitter" = "My twitter";
-  "Source code" = "Source code";
-}
+
+
+"Bounce" = "Bounce";
+
+
+"Buy me a Fanta" = "Buy me a Fanta 🥤";
+
+
+"Extra" = "Extra";
+
+
+"Extra extra" = "Extra extra";
+
+
+"Icon edit shaking" = "Icon edit shaking";
+
+
+"Icon unlock fly in" = "Icon unlock fly in";
+
+
+"Links" = "Links";
+
+
+"My twitter" = "My twitter";
+
+
+"Respring" = "Respring";
+
+
+"Respring to apply changes" = "Respring to apply changes";
+
+
+"Screen sleep(←faster|slower→)" = "Screen sleep(←faster|slower→)";
+
+
+"Screen wake" = "Screen wake";
+
+
+"Source code" = "Source code";
+
+
+"Speed" = "Speed";
+
+
+"Switcher homescreen zoom out" = "Switcher icon zoom out";
+
+
+"Switcher wallpaper zoom out" = "Switcher wallpaper zoom out";

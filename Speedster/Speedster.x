@@ -7,7 +7,9 @@ void preferencesthings(){ //pref
 	isScreenwakeEnable = (prefs && [prefs objectForKey:@"isScreenwakeEnable"] ? [[prefs valueForKey:@"isScreenwakeEnable"] boolValue] : NO );
     isScreensleepEnable = (prefs && [prefs objectForKey:@"isScreensleepEnable"] ? [[prefs valueForKey:@"isScreensleepEnable"] boolValue] : NO );
     isNoiconflyEnable = (prefs && [prefs objectForKey:@"nofly"] ? [[prefs valueForKey:@"nofly"] boolValue] : NO );
-	//isNoiconshakingEnable = (prefs && [prefs objectForKey:@"noshaking"] ? [[prefs valueForKey:@"noshaking"] boolValue] : NO );
+    isNoiconZoominSwitcher = (prefs && [prefs objectForKey:@"nozoom"] ? [[prefs valueForKey:@"nozoom"] boolValue] : NO );
+    isNoWallZoominSwitcher = (prefs && [prefs objectForKey:@"noWPzoom"] ? [[prefs valueForKey:@"noWPzoom"] boolValue] : NO );
+	isNoiconshakingEnable = (prefs && [prefs objectForKey:@"noshaking"] ? [[prefs valueForKey:@"noshaking"] boolValue] : NO );
 	Speedvalue = (prefs && [prefs objectForKey:@"Speedvalue"] ? [[prefs valueForKey:@"Speedvalue"] integerValue] : 1 );
     Bouncevalue = (prefs && [prefs objectForKey:@"Bouncevalue"] ? [[prefs valueForKey:@"Bouncevalue"] integerValue] : 1 );
     Screensleepvalue = (prefs && [prefs objectForKey:@"Screensleepvalue"] ? [[prefs valueForKey:@"Screensleepvalue"] integerValue] : 0.9 );
@@ -15,24 +17,30 @@ void preferencesthings(){ //pref
 }
 
 %hook SBFFluidBehaviorSettings
-    -(void)setResponse:(double)arg1{ //app open and close speed
+    -(void)setResponse:(double)arg1{ //App open and close speed
         if(isSpeedEnable){
             if(Speedvalue == 1){
                 %orig(0.2);
+                SwitcherDismiss = 0.2;
             }if(Speedvalue == 2){
                 %orig(0.1);
+                SwitcherDismiss = 0.17;
             }if(Speedvalue == 3){
                 %orig(0.09);
+                SwitcherDismiss = 0.15;
             }if(Speedvalue == 4){
                 %orig(0.08);
+                SwitcherDismiss = 0.12;
             }if(Speedvalue == 5){
                 %orig(0.07);
+                SwitcherDismiss = 0.1;
             }
         }else{
             %orig;
+            SwitcherDismiss = 0.3;
         }
     }
-    -(void)setDampingRatio:(double)arg1{ //app open and close bouncing (has a small side effect on iOS 13 and above with stock volume hud) 
+    -(void)setDampingRatio:(double)arg1{ //App open and close bouncing (has a small side effect on iOS 13 and above with stock volume hud)
         if(isBounceEnable){
            if(Bouncevalue == 5){
                 %orig(0.2);
@@ -71,22 +79,23 @@ void preferencesthings(){ //pref
     }
 %end
 
+//Extra
 %hook SBFWakeAnimationSettings
-    -(double)backlightFadeDuration{ //screen turn off speed
+    -(double)backlightFadeDuration{ //Screen turn off speed
         if(isScreensleepEnable){
             return Screensleepvalue;
         }else{
             return %orig;
         }
     }
-    -(double)speedMultiplierForWake{ //screen turn on speed (might be glitchy)
+    -(double)speedMultiplierForWake{ //Screen turn on speed (might be glitchy)
         if(isScreenwakeEnable){
             return Screenwakevalue;
         }else{
             return %orig;
         }
-    }    
-    -(double)speedMultiplierForLiftToWake{ //screen turn on speed but for lift to wake
+    }
+    -(double)speedMultiplierForLiftToWake{ //Screen turn on speed but for lift to wake (again might be glitchy)
         if(isScreenwakeEnable){
             return Screenwakevalue;
         }else{
@@ -95,9 +104,32 @@ void preferencesthings(){ //pref
     }
 %end
 
+//Extra extra
+%hook SBFluidSwitcherAnimationSettings
+    -(void)setWallpaperScaleInSwitcher:(double)arg1{ //Switcher wallpaper zoom out
+        if(!isNoWallZoominSwitcher){
+            %orig(1);
+        }else{
+            %orig;
+        }
+    }
+
+    -(void)setHomeScreenScaleInSwitcher:(double)arg1{ //Switcher homescreen zoom out
+        if(!isNoiconZoominSwitcher){
+            %orig(1);
+        }else{
+            %orig;
+        }
+    }
+
+    -(double)emptySwitcherDismissDelay{ //Switcher fix when set speed too high
+        return SwitcherDismiss;
+    }
+%end
+
 %hook CSCoverSheetTransitionSettings
     -(BOOL)iconsFlyIn{ //fly in icon when unlock
-        if(isNoiconflyEnable){
+        if(!isNoiconflyEnable){
             return 0;
         }else{
             return 1;
@@ -106,17 +138,16 @@ void preferencesthings(){ //pref
 %end
 
 %hook SBIconView
-    -(void)setAllowsJitter:(BOOL)arg1{ //Icon shaking (iOS 12)
-        if (isNoiconshakingEnable){
+    -(void)setAllowsEditingAnimation:(BOOL)arg1{
+        if (!isNoiconshakingEnable){ //Icon editting jitter
             %orig(NO);
         }else{
             %orig;
         }
-    }        
+    }
 %end
 
-%ctor {
-	//more pref
+%ctor { //More pref
 	preferencesthings();
 	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)preferencesthings, CFSTR("com.hoangdus.speedsterprefs-updated"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 }

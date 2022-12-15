@@ -4,8 +4,8 @@
 <dict>
 	<key>items</key>
 	<array>
-	    <dict>
-		    <key>cell</key>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>headerCellClass</key>
 			<string>SdrHeaderCell</string>
@@ -57,7 +57,7 @@
 			</array>
 		</dict>
 		<dict>
-		    <key>cell</key>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 		</dict>
 		<dict>
@@ -189,12 +189,12 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Extra extra</string>
-		</dict>	
+		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<false/>
+			<true/>
 			<key>defaults</key>
 			<string>com.hoangdus.speedsterprefs</string>
 			<key>PostNotification</key>
@@ -202,7 +202,55 @@
 			<key>key</key>
 			<string>nofly</string>
 			<key>label</key>
-			<string>No icons fly</string>
+			<string>Icon unlock fly in</string>
+			<key>cellClass</key>
+			<string>SpeedsterSwitchCell</string>
+		</dict>
+                <dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>noshaking</string>
+			<key>label</key>
+			<string>Icon edit shaking</string>
+			<key>cellClass</key>
+			<string>SpeedsterSwitchCell</string>
+		</dict>
+                <dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>nozoom</string>
+			<key>label</key>
+			<string>Switcher homescreen zoom out</string>
+			<key>cellClass</key>
+			<string>SpeedsterSwitchCell</string>
+		</dict>
+                <dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>noWPzoom</string>
+			<key>label</key>
+			<string>Switcher wallpaper zoom out</string>
 			<key>cellClass</key>
 			<string>SpeedsterSwitchCell</string>
 		</dict>
@@ -212,9 +260,9 @@
 			<key>label</key>
 			<string>Respring to apply changes</string>
 		</dict>
-		<dict>			
+		<dict>
 			<key>cell</key>
-			<string>PSButtonCell</string>			
+			<string>PSButtonCell</string>
 			<key>label</key>
 			<string>Respring</string>
 			<key>action</key>
@@ -227,7 +275,7 @@
 			<string>Links</string>
 		</dict>
 		<dict>
-		    <key>action</key>
+			<key>action</key>
 			<string>twitter</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
@@ -235,15 +283,21 @@
 			<string>My twitter</string>
 		</dict>
 		<dict>
-		    <key>action</key>
+			<key>action</key>
 			<string>github</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
 			<string>Source code</string>
 		</dict>
+                <dict>
+			<key>action</key>
+			<string>paypal</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Buy me a Fanta</string>
+		</dict>
 	</array>
-	<key>title</key>
-	<string></string>
 </dict>
 </plist>
