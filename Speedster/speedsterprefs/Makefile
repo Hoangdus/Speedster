@@ -1,6 +1,9 @@
 ARCHS = arm64 arm64e
+SDK_PATH = $(THEOS)/sdks/iPhoneOS13.7.sdk/
+SYSROOT = $(SDK_PATH)
 
 include $(THEOS)/makefiles/common.mk
+export THEOS_PACKAGE_SCHEME=rootless
 
 BUNDLE_NAME = SpeedsterPrefs
 

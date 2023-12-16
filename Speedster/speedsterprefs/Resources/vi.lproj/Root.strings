@@ -9,7 +9,10 @@
 "Extra" = "Cài đặt thêm";
 
 
-"Extra extra" = "Cài đặt thêm nữa";
+"FineTuneBounce" = "Tuỳ chỉnh sâu";
+
+
+"FineTuneSpeed" = "Tuỳ chỉnh sâu";
 
 
 "Icon edit shaking" = "Icon run khi chỉnh vị trí";
@@ -30,10 +33,13 @@
 "Respring to apply changes" = "Respring để áp dụng thay đổi";
 
 
-"Screen sleep(←faster|slower→)" = "Tốc độ tắt màn(←nhanh hơn)";
+"Screen sleep(←faster|slower→)" = "Tốc độ tắt màn";
 
 
 "Screen wake" = "Tốc độ bật màn";
+
+
+"Sleep Wake Speed" = "Tốc độ bật tắt màn hình";
 
 
 "Source code" = "Mã nguồn";

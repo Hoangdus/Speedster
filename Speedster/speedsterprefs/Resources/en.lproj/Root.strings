@@ -9,7 +9,10 @@
 "Extra" = "Extra";
 
 
-"Extra extra" = "Extra extra";
+"FineTuneBounce" = "Fine tune mode";
+
+
+"FineTuneSpeed" = "Fine tune mode";
 
 
 "Icon edit shaking" = "Icon edit shaking";
@@ -30,10 +33,13 @@
 "Respring to apply changes" = "Respring to apply changes";
 
 
-"Screen sleep(←faster|slower→)" = "Screen sleep(←faster|slower→)";
+"Screen sleep(←faster|slower→)" = "Screen sleep";
 
 
 "Screen wake" = "Screen wake";
+
+
+"Sleep Wake Speed" = "Screen sleep wake speed";
 
 
 "Source code" = "Source code";
