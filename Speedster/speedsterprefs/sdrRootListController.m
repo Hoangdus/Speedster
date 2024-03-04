@@ -25,7 +25,7 @@
 }
 
 - (void)paypal{
-  [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://www.paypal.com/paypalme/HoangDus"]options:@{} completionHandler:nil];
+  [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://ko-fi.com/hoangdus"]options:@{} completionHandler:nil];
 }
 
 @end

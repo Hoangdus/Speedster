@@ -6,6 +6,15 @@
 "Buy me a Fanta" = "Mua tôi 1 lon Fanta 🥤";
 
 
+"Duration" = "Thời gian hoạt ảnh";
+
+
+"EndingDuration" = "Thời gian kết thúc";
+
+
+"EndingSpeed" = "Tốc độ kết thúc";
+
+
 "Extra" = "Cài đặt thêm";
 
 
@@ -15,13 +24,25 @@
 "FineTuneSpeed" = "Tuỳ chỉnh sâu";
 
 
+"FolderSpeed" = "Tốc độ thư mục";
+
+
 "Icon edit shaking" = "Icon run khi chỉnh vị trí";
 
 
 "Icon unlock fly in" = "Icon bay vào khi mở khóa";
 
 
+"InAppAnimation" = "Hoạt ảnh trong app";
+
+
+"InstantFolder" = "Hoạt ảnh mở thư mục ";
+
+
 "Links" = "Liên kết";
+
+
+"Mass" = "Trọng lượng hoạt ảnh";
 
 
 "My twitter" = "Twitter của thôi";
@@ -46,6 +67,9 @@
 
 
 "Speed" = "Tốc độ";
+
+
+"StartingSpeed" = "Tốc độ bắt đầu";
 
 
 "Switcher homescreen zoom out" = "Icon zoom ra trong đa nghiệm";

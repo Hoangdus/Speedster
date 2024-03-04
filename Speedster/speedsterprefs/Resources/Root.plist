@@ -94,6 +94,42 @@
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>FolderSpeed</string>
+			<key>label</key>
+			<string>FolderSpeed</string>
+			<key>cellClass</key>
+			<string>SpeedsterSwitchCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>isSegmented</key>
+			<false/>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>max</key>
+			<real>2</real>
+			<key>min</key>
+			<real>1</real>
+			<key>showValue</key>
+			<false/>
+			<key>key</key>
+			<string>FolderSpeedValue</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
 		</dict>
 		<dict>
@@ -181,8 +217,206 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>InAppAnimation</string>
 			<key>label</key>
-			<string>Sleep Wake Speed</string>
+			<string>InAppAnimation</string>
+			<key>cellClass</key>
+			<string>SpeedsterSwitchCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>StartingSpeed</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>VelocityValue</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>validValues</key>
+			<array>
+				<real>0.1</real>
+				<real>0.5</real>
+				<real>1</real>
+				<real>1.5</real>
+				<real>2</real>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>0.1</string>
+				<string>0.5</string>
+				<string>1</string>
+				<string>1.5</string>
+				<string>2</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>EndingSpeed</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>DampingValue</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>validValues</key>
+			<array>
+				<real>0.1</real>
+				<real>0.5</real>
+				<real>1</real>
+				<real>1.5</real>
+				<real>2</real>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>0.1</string>
+				<string>0.5</string>
+				<string>1</string>
+				<string>1.5</string>
+				<string>2</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>EndingDuration</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>StiffnessValue</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>validValues</key>
+			<array>
+				<real>0.1</real>
+				<real>0.5</real>
+				<real>1</real>
+				<real>1.5</real>
+				<real>2</real>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>0.1</string>
+				<string>0.5</string>
+				<string>1</string>
+				<string>1.5</string>
+				<string>2</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>Mass</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>MassValue</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>validValues</key>
+			<array>
+				<real>0.1</real>
+				<real>0.5</real>
+				<real>1</real>
+				<real>1.5</real>
+				<real>2</real>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>0.1</string>
+				<string>0.5</string>
+				<string>1</string>
+				<string>1.5</string>
+				<string>2</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>Duration</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSegmentCell</string>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>DurationValue</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>validValues</key>
+			<array>
+				<real>0.1</real>
+				<real>0.5</real>
+				<real>1</real>
+				<real>1.5</real>
+				<real>2</real>
+			</array>
+			<key>validTitles</key>
+			<array>
+				<string>0.1</string>
+				<string>0.5</string>
+				<string>1</string>
+				<string>1.5</string>
+				<string>2</string>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -310,7 +544,7 @@
 			<key>cellClass</key>
 			<string>SpeedsterSwitchCell</string>
 		</dict>
-                <dict>
+        <dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
@@ -323,6 +557,22 @@
 			<string>noWPzoom</string>
 			<key>label</key>
 			<string>Switcher wallpaper zoom out</string>
+			<key>cellClass</key>
+			<string>SpeedsterSwitchCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.hoangdus.speedsterprefs</string>
+			<key>PostNotification</key>
+			<string>com.hoangdus.speedsterprefs-updated</string>
+			<key>key</key>
+			<string>InstantFolder</string>
+			<key>label</key>
+			<string>InstantFolder</string>
 			<key>cellClass</key>
 			<string>SpeedsterSwitchCell</string>
 		</dict>
@@ -362,7 +612,7 @@
 			<key>label</key>
 			<string>Source code</string>
 		</dict>
-                <dict>
+        <dict>
 			<key>action</key>
 			<string>paypal</string>
 			<key>cell</key>

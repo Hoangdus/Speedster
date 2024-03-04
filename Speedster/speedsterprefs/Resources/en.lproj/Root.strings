@@ -6,6 +6,15 @@
 "Buy me a Fanta" = "Buy me a Fanta 🥤";
 
 
+"Duration" = "Duration";
+
+
+"EndingDuration" = "Ending duration";
+
+
+"EndingSpeed" = "Ending speed";
+
+
 "Extra" = "Extra";
 
 
@@ -15,13 +24,25 @@
 "FineTuneSpeed" = "Fine tune mode";
 
 
+"FolderSpeed" = "Folder speed";
+
+
 "Icon edit shaking" = "Icon edit shaking";
 
 
 "Icon unlock fly in" = "Icon unlock fly in";
 
 
+"InAppAnimation" = "In app animation";
+
+
+"InstantFolder" = "Instant folder";
+
+
 "Links" = "Links";
+
+
+"Mass" = "Mass";
 
 
 "My twitter" = "My twitter";
@@ -46,6 +67,9 @@
 
 
 "Speed" = "Speed";
+
+
+"StartingSpeed" = "Starting speed";
 
 
 "Switcher homescreen zoom out" = "Switcher icon zoom out";
