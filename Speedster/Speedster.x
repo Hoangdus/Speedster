@@ -31,32 +31,41 @@ static double DurationValue;
 
 void preferencesthings(){ //pref starts to look THICC
     //NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.hoangdus.speedsterprefs.plist"];
+    //app close/open values
     NSDictionary *prefs = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.hoangdus.speedsterprefs"];
     isSpeedEnable = (prefs && [prefs objectForKey:@"isSpeedEnable"] ? [[prefs valueForKey:@"isSpeedEnable"] boolValue] : NO );
     isBounceEnable = (prefs && [prefs objectForKey:@"isBounceEnable"] ? [[prefs valueForKey:@"isBounceEnable"] boolValue] : NO );
-    isScreenwakeEnable = (prefs && [prefs objectForKey:@"isScreenwakeEnable"] ? [[prefs valueForKey:@"isScreenwakeEnable"] boolValue] : NO );
-    isScreensleepEnable = (prefs && [prefs objectForKey:@"isScreensleepEnable"] ? [[prefs valueForKey:@"isScreensleepEnable"] boolValue] : NO );
-    isNoiconflyEnable = (prefs && [prefs objectForKey:@"nofly"] ? [[prefs valueForKey:@"nofly"] boolValue] : NO );
-    isNoiconZoominSwitcher = (prefs && [prefs objectForKey:@"nozoom"] ? [[prefs valueForKey:@"nozoom"] boolValue] : NO );
-    isNoWallZoominSwitcher = (prefs && [prefs objectForKey:@"noWPzoom"] ? [[prefs valueForKey:@"noWPzoom"] boolValue] : NO );
-    isNoiconshakingEnable = (prefs && [prefs objectForKey:@"noshaking"] ? [[prefs valueForKey:@"noshaking"] boolValue] : NO );
     Speedvalue = (prefs && [prefs objectForKey:@"Speedvalue"] ? [[prefs valueForKey:@"Speedvalue"] integerValue] : 1 );
     Bouncevalue = (prefs && [prefs objectForKey:@"Bouncevalue"] ? [[prefs valueForKey:@"Bouncevalue"] integerValue] : 1 );
-    Screensleepvalue = (prefs && [prefs objectForKey:@"Screensleepvalue"] ? [[prefs valueForKey:@"Screensleepvalue"] doubleValue] : 0.9 );
-    Screenwakevalue = (prefs && [prefs objectForKey:@"Screenwakevalue"] ? [[prefs valueForKey:@"Screenwakevalue"] doubleValue] : 0.9 );
     isFineTuneSpeedEnable = (prefs && [prefs objectForKey:@"isFineTuneSpeedEnable"] ? [[prefs valueForKey:@"isFineTuneSpeedEnable"] boolValue] : NO );
     isFineTuneBounceEnable = (prefs && [prefs objectForKey:@"isFineTuneBounceEnable"] ? [[prefs valueForKey:@"isFineTuneBounceEnable"] boolValue] : NO );
     FineTuneSpeedValue = (prefs && [prefs objectForKey:@"FineTuneSpeedValue"] ? [[prefs valueForKey:@"FineTuneSpeedValue"] doubleValue] : 1 );
     FineTuneBounceValue = (prefs && [prefs objectForKey:@"FineTuneBounceValue"] ? [[prefs valueForKey:@"FineTuneBounceValue"] doubleValue] : 1 );
+
+    //screen sleep/wake values
+    Screensleepvalue = (prefs && [prefs objectForKey:@"Screensleepvalue"] ? [[prefs valueForKey:@"Screensleepvalue"] doubleValue] : 0.9 );
+    Screenwakevalue = (prefs && [prefs objectForKey:@"Screenwakevalue"] ? [[prefs valueForKey:@"Screenwakevalue"] doubleValue] : 0.9 );
+    isScreenwakeEnable = (prefs && [prefs objectForKey:@"isScreenwakeEnable"] ? [[prefs valueForKey:@"isScreenwakeEnable"] boolValue] : NO );
+    isScreensleepEnable = (prefs && [prefs objectForKey:@"isScreensleepEnable"] ? [[prefs valueForKey:@"isScreensleepEnable"] boolValue] : NO );
+    
+    //folder values
     isFolderSpeedEnable = (prefs && [prefs objectForKey:@"FolderSpeed"] ? [[prefs valueForKey:@"FolderSpeed"] boolValue] : NO );
     FolderSpeed = (prefs && [prefs objectForKey:@"FolderSpeedValue"] ? [[prefs valueForKey:@"FolderSpeedValue"] doubleValue] : 1 );
-    isInstantFolder = (prefs && [prefs objectForKey:@"InstantFolder"] ? [[prefs valueForKey:@"InstantFolder"] boolValue] : NO );
     inAppAnimation = (prefs && [prefs objectForKey:@"InAppAnimation"] ? [[prefs valueForKey:@"InAppAnimation"] boolValue] : NO );
+    
+    //in-app values
     VelocityValue = (prefs && [prefs objectForKey:@"VelocityValue"] ? [[prefs valueForKey:@"VelocityValue"] doubleValue] : 1 );
     DampingValue = (prefs && [prefs objectForKey:@"DampingValue"] ? [[prefs valueForKey:@"DampingValue"] doubleValue] : 1 );
     MassValue = (prefs && [prefs objectForKey:@"MassValue"] ? [[prefs valueForKey:@"MassValue"] doubleValue] : 1 );
     StiffnessValue = (prefs && [prefs objectForKey:@"StiffnessValue"] ? [[prefs valueForKey:@"StiffnessValue"] doubleValue] : 1 );
     DurationValue = (prefs && [prefs objectForKey:@"DurationValue"] ? [[prefs valueForKey:@"DurationValue"] doubleValue] : 1 );
+
+    //extra
+    isNoiconflyEnable = (prefs && [prefs objectForKey:@"nofly"] ? [[prefs valueForKey:@"nofly"] boolValue] : NO );
+    isNoiconZoominSwitcher = (prefs && [prefs objectForKey:@"nozoom"] ? [[prefs valueForKey:@"nozoom"] boolValue] : NO );
+    isNoWallZoominSwitcher = (prefs && [prefs objectForKey:@"noWPzoom"] ? [[prefs valueForKey:@"noWPzoom"] boolValue] : NO );
+    isNoiconshakingEnable = (prefs && [prefs objectForKey:@"noshaking"] ? [[prefs valueForKey:@"noshaking"] boolValue] : NO );
+    isInstantFolder = (prefs && [prefs objectForKey:@"InstantFolder"] ? [[prefs valueForKey:@"InstantFolder"] boolValue] : NO );
 }
 
 //reverse number to make sliders go from left to right lol
@@ -166,8 +175,15 @@ static double reverseTurnOffSpeed(double input){
     }
 %end
 
- //springboard speed ig
+ //springboard folder speed (Took me a good while to figure what the 'F' stands for)
 %hook SBFAnimationSettings
+
+    //folder starting speed
+    -(void)setInitialVelocity:(double)arg1{
+        %orig();
+    }
+
+    //folder speed
     -(void)setSpeed:(double)arg1{
         if (isFolderSpeedEnable){
             %orig(FolderSpeed);
@@ -175,40 +191,71 @@ static double reverseTurnOffSpeed(double input){
             %orig();
         }
     }
+
+    //folder ending speed
+    -(void)setDamping:(double)arg1{
+        %orig();
+    }
+
+    //folder mass
+    -(void)setMass:(double)arg1{
+        %orig();
+    }
+
+    //folder ending duration
+    -(void)setStiffness:(double)arg1{
+        %orig();
+    }
+
+
+
 %end
 
 //In-App animation
 %hook CASpringAnimation
 
+    -(void)setAnimationType:(long long)arg1 {
+        %orig();
+    }
+
+    //start speed
+    -(void)setInitialVelocity:(double)arg1{
+        %orig();
+    }
+
+    //speed
     - (void)setVelocity:(float)arg1{
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * VelocityValue);
         }else{
-            %orig;
+            %orig();
         }
     }
 
+    //ending duration
     -(void)setStiffness:(double)arg1{
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * StiffnessValue);
         }else{
-            %orig;
+            %orig();
         }
     }
 
+    //mass
     -(void)setMass:(double)arg1{
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * MassValue);
         }else{
-            %orig;
+            %orig();
         }
     }
 
+    //ending speed
     -(void)setDamping:(double)arg1{
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * DampingValue);
         }else{
-            %orig;
+            %orig();
         }
     }
 
@@ -216,11 +263,12 @@ static double reverseTurnOffSpeed(double input){
 
 %hook CAAnimation
 
+    //duration
     -(void)setDuration:(double)arg1{
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * DurationValue);
         }else{
-            %orig;
+            %orig();
         }
     }
 
@@ -228,7 +276,7 @@ static double reverseTurnOffSpeed(double input){
         if (isOnSpringBoard && isInstantFolder){
             %orig(100);        
         }else{
-            %orig;
+            %orig();
         }
     }
 
