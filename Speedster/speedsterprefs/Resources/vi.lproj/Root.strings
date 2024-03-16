@@ -9,10 +9,10 @@
 "Duration" = "Thời gian hoạt ảnh";
 
 
-"EndingDuration" = "Thời gian kết thúc";
+"Stiffness" = "Thời gian kết thúc";
 
 
-"EndingSpeed" = "Tốc độ kết thúc";
+"Damping" = "Tốc độ kết thúc";
 
 
 "Extra" = "Cài đặt thêm";
@@ -69,7 +69,7 @@
 "Speed" = "Tốc độ";
 
 
-"StartingSpeed" = "Tốc độ bắt đầu";
+"Velocity" = "Tốc độ";
 
 
 "Switcher homescreen zoom out" = "Icon zoom ra trong đa nghiệm";

@@ -238,7 +238,7 @@
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>StartingSpeed</string>
+			<string>Velocity</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -274,7 +274,7 @@
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>EndingSpeed</string>
+			<string>Damping</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -310,7 +310,7 @@
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>EndingDuration</string>
+			<string>Stiffness</string>
 		</dict>
 		<dict>
 			<key>cell</key>

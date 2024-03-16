@@ -9,10 +9,10 @@
 "Duration" = "Duration";
 
 
-"EndingDuration" = "Ending duration";
+"Stiffness" = "Ending duration";
 
 
-"EndingSpeed" = "Ending speed";
+"Damping" = "Ending speed";
 
 
 "Extra" = "Extra";
@@ -69,7 +69,7 @@
 "Speed" = "Speed";
 
 
-"StartingSpeed" = "Starting speed";
+"Velocity" = "Speed";
 
 
 "Switcher homescreen zoom out" = "Switcher icon zoom out";
