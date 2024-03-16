@@ -10,7 +10,7 @@ static BOOL isNoiconflyEnable;
 static BOOL isNoiconshakingEnable;
 static BOOL isNoiconZoominSwitcher;
 static BOOL isNoWallZoominSwitcher;
-static BOOL isFolderSpeedEnable;
+static BOOL isFolderAnimationEnabled;
 static BOOL isOnSpringBoard;
 static BOOL isInstantFolder;
 static BOOL inAppAnimation;
@@ -49,11 +49,11 @@ void preferencesthings(){ //pref starts to look THICC
     isScreensleepEnable = (prefs && [prefs objectForKey:@"isScreensleepEnable"] ? [[prefs valueForKey:@"isScreensleepEnable"] boolValue] : NO );
     
     //folder values
-    isFolderSpeedEnable = (prefs && [prefs objectForKey:@"FolderSpeed"] ? [[prefs valueForKey:@"FolderSpeed"] boolValue] : NO );
-    FolderSpeed = (prefs && [prefs objectForKey:@"FolderSpeedValue"] ? [[prefs valueForKey:@"FolderSpeedValue"] doubleValue] : 1 );
-    inAppAnimation = (prefs && [prefs objectForKey:@"InAppAnimation"] ? [[prefs valueForKey:@"InAppAnimation"] boolValue] : NO );
+    isFolderAnimationEnabled = (prefs && [prefs objectForKey:@"isFolderAnimationEnabled"] ? [[prefs valueForKey:@"isFolderAnimationEnabled"] boolValue] : NO );
+    FolderSpeed = (prefs && [prefs objectForKey:@"FolderVelocityValue"] ? [[prefs valueForKey:@"FolderVelocityValue"] doubleValue] : 1 );
     
     //in-app values
+    inAppAnimation = (prefs && [prefs objectForKey:@"InAppAnimation"] ? [[prefs valueForKey:@"InAppAnimation"] boolValue] : NO );
     VelocityValue = (prefs && [prefs objectForKey:@"VelocityValue"] ? [[prefs valueForKey:@"VelocityValue"] doubleValue] : 1 );
     DampingValue = (prefs && [prefs objectForKey:@"DampingValue"] ? [[prefs valueForKey:@"DampingValue"] doubleValue] : 1 );
     MassValue = (prefs && [prefs objectForKey:@"MassValue"] ? [[prefs valueForKey:@"MassValue"] doubleValue] : 1 );
@@ -185,10 +185,14 @@ static double reverseTurnOffSpeed(double input){
 
     //folder speed
     -(void)setSpeed:(double)arg1{
-        if (isFolderSpeedEnable){
-            %orig(FolderSpeed);
+        if(isInstantFolder){
+            %orig(arg1*100);        
         }else{
-            %orig();
+            if (isFolderAnimationEnabled){
+                %orig(FolderSpeed);
+            }else{
+                %orig();
+            }
         }
     }
 
@@ -213,10 +217,6 @@ static double reverseTurnOffSpeed(double input){
 
 //In-App animation
 %hook CASpringAnimation
-
-    -(void)setAnimationType:(long long)arg1 {
-        %orig();
-    }
 
     //start speed
     -(void)setInitialVelocity:(double)arg1{
@@ -272,13 +272,13 @@ static double reverseTurnOffSpeed(double input){
         }
     }
 
-    -(void)setSpeed:(float)arg1{
-        if (isOnSpringBoard && isInstantFolder){
-            %orig(100);        
-        }else{
-            %orig();
-        }
-    }
+    // -(void)setSpeed:(float)arg1{
+    //     if (isOnSpringBoard && isInstantFolder){
+    //         %orig(100);        
+    //     }else{
+    //         %orig();
+    //     }
+    // }
 
 %end
 
