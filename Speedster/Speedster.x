@@ -1,33 +1,36 @@
 #import <UIKit/UIKit.h>
+static BOOL isOnSpringBoard;
+static double SwitcherDismiss;
 
 static BOOL isSpeedEnable;
-static BOOL isFineTuneSpeedEnable;
 static BOOL isBounceEnable;
-static BOOL isFineTuneBounceEnable;
-static BOOL isScreenwakeEnable;
-static BOOL isScreensleepEnable;
-static BOOL isNoiconflyEnable;
-static BOOL isNoiconshakingEnable;
-static BOOL isNoiconZoominSwitcher;
-static BOOL isNoWallZoominSwitcher;
-static BOOL isFolderAnimationEnabled;
-static BOOL isOnSpringBoard;
-static BOOL isInstantFolder;
-static BOOL inAppAnimation;
 static int Speedvalue;
 static int Bouncevalue;
-static double Screensleepvalue;
-static double Screenwakevalue;
-static double SwitcherDismiss;
+static BOOL isFineTuneSpeedEnable;
+static BOOL isFineTuneBounceEnable;
 static double FineTuneSpeedValue;
 static double FineTuneBounceValue;
+
+static BOOL isFolderAnimationEnabled;
 static double FolderSpeed;
+
+static BOOL inAppAnimation;
 static double VelocityValue;
 static double StiffnessValue;
 static double MassValue;
 static double DampingValue;
 static double DurationValue;
 
+static BOOL isScreenwakeEnable;
+static BOOL isScreensleepEnable;
+static double Screensleepvalue;
+static double Screenwakevalue;
+
+static BOOL isNoiconflyEnable;
+static BOOL isNoiconshakingEnable;
+static BOOL isNoiconZoominSwitcher;
+static BOOL isNoWallZoominSwitcher;
+static BOOL isInstantFolder;
 
 void preferencesthings(){ //pref starts to look THICC
     //NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.hoangdus.speedsterprefs.plist"];
@@ -189,7 +192,7 @@ static double reverseTurnOffSpeed(double input){
             %orig(arg1*100);        
         }else{
             if (isFolderAnimationEnabled){
-                %orig(FolderSpeed);
+                %orig(arg1*FolderSpeed);
             }else{
                 %orig();
             }
@@ -271,15 +274,7 @@ static double reverseTurnOffSpeed(double input){
             %orig();
         }
     }
-
-    // -(void)setSpeed:(float)arg1{
-    //     if (isOnSpringBoard && isInstantFolder){
-    //         %orig(100);        
-    //     }else{
-    //         %orig();
-    //     }
-    // }
-
+    
 %end
 
 //Screen Turn On and Off Speed
