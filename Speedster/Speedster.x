@@ -12,9 +12,14 @@ static double FineTuneSpeedValue;
 static double FineTuneBounceValue;
 
 static BOOL isFolderAnimationEnabled;
-static double FolderSpeed;
+// static double FolderInitialVelocityValue;
+static double FolderSpeedValue;
+static double FolderStiffnessValue;
+static double FolderMassValue;
+static double FolderDampingValue;
 
 static BOOL inAppAnimation;
+// static double InitialVelocityValue;
 static double VelocityValue;
 static double StiffnessValue;
 static double MassValue;
@@ -53,10 +58,15 @@ void preferencesthings(){ //pref starts to look THICC
     
     //folder values
     isFolderAnimationEnabled = (prefs && [prefs objectForKey:@"isFolderAnimationEnabled"] ? [[prefs valueForKey:@"isFolderAnimationEnabled"] boolValue] : NO );
-    FolderSpeed = (prefs && [prefs objectForKey:@"FolderVelocityValue"] ? [[prefs valueForKey:@"FolderVelocityValue"] doubleValue] : 1 );
-    
+    // FolderInitialVelocityValue
+    FolderSpeedValue = (prefs && [prefs objectForKey:@"FolderVelocityValue"] ? [[prefs valueForKey:@"FolderVelocityValue"] doubleValue] : 1 );
+    FolderDampingValue = (prefs && [prefs objectForKey:@"FolderDampingValue"] ? [[prefs valueForKey:@"FolderDampingValue"] doubleValue] : 1 );
+    FolderMassValue = (prefs && [prefs objectForKey:@"FolderMassValue"] ? [[prefs valueForKey:@"FolderMassValue"] doubleValue] : 1 );
+    FolderStiffnessValue = (prefs && [prefs objectForKey:@"FolderStiffnessValue"] ? [[prefs valueForKey:@"FolderStiffnessValue"] doubleValue] : 1 );
+
     //in-app values
     inAppAnimation = (prefs && [prefs objectForKey:@"InAppAnimation"] ? [[prefs valueForKey:@"InAppAnimation"] boolValue] : NO );
+    // InitialVelocityValue
     VelocityValue = (prefs && [prefs objectForKey:@"VelocityValue"] ? [[prefs valueForKey:@"VelocityValue"] doubleValue] : 1 );
     DampingValue = (prefs && [prefs objectForKey:@"DampingValue"] ? [[prefs valueForKey:@"DampingValue"] doubleValue] : 1 );
     MassValue = (prefs && [prefs objectForKey:@"MassValue"] ? [[prefs valueForKey:@"MassValue"] doubleValue] : 1 );
@@ -183,7 +193,7 @@ static double reverseTurnOffSpeed(double input){
 
     //folder starting speed
     -(void)setInitialVelocity:(double)arg1{
-        %orig();
+        %orig;
     }
 
     //folder speed
@@ -194,24 +204,48 @@ static double reverseTurnOffSpeed(double input){
             if (isFolderAnimationEnabled){
                 %orig(arg1*FolderSpeed);
             }else{
-                %orig();
+                %orig;
             }
         }
     }
 
     //folder ending speed
     -(void)setDamping:(double)arg1{
-        %orig();
+        if(isInstantFolder){
+            %orig;
+        }else{
+            if(isFolderAnimationEnabled){
+                %orig(arg1*FolderDampingValue);
+            }else{
+                %orig;
+            }
+        }
     }
 
     //folder mass
     -(void)setMass:(double)arg1{
-        %orig();
+        if(isInstantFolder){
+            %orig(arg1*0.01);
+        }else{
+            if(isFolderAnimationEnabled){
+                %orig(arg1*FolderMassValue);
+            }else{
+                %orig;
+            }
+        }
     }
 
     //folder ending duration
     -(void)setStiffness:(double)arg1{
-        %orig();
+        if(isInstantFolder){
+            %orig;
+        }else{
+            if(isFolderAnimationEnabled){
+                %orig(arg1*FolderStiffnessValue);
+            }else{
+                %orig;
+            }
+        }
     }
 
 
@@ -223,7 +257,7 @@ static double reverseTurnOffSpeed(double input){
 
     //start speed
     -(void)setInitialVelocity:(double)arg1{
-        %orig();
+        %orig;
     }
 
     //speed
@@ -231,7 +265,7 @@ static double reverseTurnOffSpeed(double input){
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * VelocityValue);
         }else{
-            %orig();
+            %orig;
         }
     }
 
@@ -240,7 +274,7 @@ static double reverseTurnOffSpeed(double input){
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * StiffnessValue);
         }else{
-            %orig();
+            %orig;
         }
     }
 
@@ -249,7 +283,7 @@ static double reverseTurnOffSpeed(double input){
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * MassValue);
         }else{
-            %orig();
+            %orig;
         }
     }
 
@@ -258,7 +292,7 @@ static double reverseTurnOffSpeed(double input){
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * DampingValue);
         }else{
-            %orig();
+            %orig;
         }
     }
 
@@ -271,7 +305,7 @@ static double reverseTurnOffSpeed(double input){
         if(inAppAnimation && !isOnSpringBoard){
             %orig(arg1 * DurationValue);
         }else{
-            %orig();
+            %orig;
         }
     }
     
