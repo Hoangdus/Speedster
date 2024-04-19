@@ -231,7 +231,7 @@ static double reverseFolderSliderValue(double input){
         if(isInstantFolder){
             %orig;
         }else{
-            if(isFolderAnimationEnabled){
+            if(isFolderAnimationEnabled && isFolderAnimationBounceEnabled){
                 %orig(arg1*reverseFolderSliderValue(FolderDampingValue));
             }else{
                 %orig;
@@ -301,7 +301,7 @@ static double reverseFolderSliderValue(double input){
     }
 
     -(void)setDamping:(double)arg1{
-        if(inAppAnimationEnabled && !isOnSpringBoard){
+        if((inAppAnimationEnabled && inAppAnimationBounceEnabled) && !isOnSpringBoard){
             %orig(arg1 * reverseAppSpeedSliderValue(DampingValue));
         }else{
             %orig(arg1);

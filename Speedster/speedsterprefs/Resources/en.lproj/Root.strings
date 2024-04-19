@@ -30,9 +30,6 @@
 "FolderMass" = "Speed";
 
 
-"FolderMassValue" = "";
-
-
 "FolderStiffness" = "Ending duration";
 
 
@@ -60,7 +57,7 @@
 "Respring" = "Respring";
 
 
-"Respring to apply changes" = "Respring to apply changes";
+"Respring to apply changes" = "Respring to apply changes(may need to do twice)";
 
 
 "Screen sleep(←faster|slower→)" = "Screen sleep";
