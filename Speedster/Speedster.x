@@ -2,6 +2,9 @@
 static BOOL isOnSpringBoard;
 static double SwitcherDismiss;
 
+static Class CASpringAnimationClass = Nil;
+// static Class SBFAnimationSettingsClass = Nil;
+
 static BOOL isSpeedEnable;
 static BOOL isBounceEnable;
 static int Speedvalue;
@@ -12,16 +15,18 @@ static double FineTuneSpeedValue;
 static double FineTuneBounceValue;
 
 static BOOL isFolderAnimationEnabled;
+static BOOL isFolderAnimationBounceEnabled;
 // static double FolderInitialVelocityValue;
-static double FolderSpeedValue;
-static double FolderStiffnessValue;
+// static double FolderSpeedValue;
+// static double FolderStiffnessValue;
 static double FolderMassValue;
 static double FolderDampingValue;
 
-static BOOL inAppAnimation;
+static BOOL inAppAnimationEnabled;
+static BOOL inAppAnimationBounceEnabled;
 // static double InitialVelocityValue;
-static double VelocityValue;
-static double StiffnessValue;
+// static double VelocityValue;
+// static double StiffnessValue;
 static double MassValue;
 static double DampingValue;
 static double DurationValue;
@@ -38,9 +43,9 @@ static BOOL isNoWallZoominSwitcher;
 static BOOL isInstantFolder;
 
 void preferencesthings(){ //pref starts to look THICC
-    //NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.hoangdus.speedsterprefs.plist"];
+    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/jb/var/mobile/Library/Preferences/com.hoangdus.speedsterprefs.plist"];
     //app close/open values
-    NSDictionary *prefs = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.hoangdus.speedsterprefs"];
+    // NSDictionary *prefs = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.hoangdus.speedsterprefs"];
     isSpeedEnable = (prefs && [prefs objectForKey:@"isSpeedEnable"] ? [[prefs valueForKey:@"isSpeedEnable"] boolValue] : NO );
     isBounceEnable = (prefs && [prefs objectForKey:@"isBounceEnable"] ? [[prefs valueForKey:@"isBounceEnable"] boolValue] : NO );
     Speedvalue = (prefs && [prefs objectForKey:@"Speedvalue"] ? [[prefs valueForKey:@"Speedvalue"] integerValue] : 1 );
@@ -51,27 +56,29 @@ void preferencesthings(){ //pref starts to look THICC
     FineTuneBounceValue = (prefs && [prefs objectForKey:@"FineTuneBounceValue"] ? [[prefs valueForKey:@"FineTuneBounceValue"] doubleValue] : 1 );
 
     //screen sleep/wake values
-    Screensleepvalue = (prefs && [prefs objectForKey:@"Screensleepvalue"] ? [[prefs valueForKey:@"Screensleepvalue"] doubleValue] : 0.9 );
-    Screenwakevalue = (prefs && [prefs objectForKey:@"Screenwakevalue"] ? [[prefs valueForKey:@"Screenwakevalue"] doubleValue] : 0.9 );
     isScreenwakeEnable = (prefs && [prefs objectForKey:@"isScreenwakeEnable"] ? [[prefs valueForKey:@"isScreenwakeEnable"] boolValue] : NO );
     isScreensleepEnable = (prefs && [prefs objectForKey:@"isScreensleepEnable"] ? [[prefs valueForKey:@"isScreensleepEnable"] boolValue] : NO );
+    Screensleepvalue = (prefs && [prefs objectForKey:@"Screensleepvalue"] ? [[prefs valueForKey:@"Screensleepvalue"] doubleValue] : 0.01 );
+    Screenwakevalue = (prefs && [prefs objectForKey:@"Screenwakevalue"] ? [[prefs valueForKey:@"Screenwakevalue"] doubleValue] : 2 );
     
     //folder values
     isFolderAnimationEnabled = (prefs && [prefs objectForKey:@"isFolderAnimationEnabled"] ? [[prefs valueForKey:@"isFolderAnimationEnabled"] boolValue] : NO );
+    isFolderAnimationBounceEnabled = (prefs && [prefs objectForKey:@"isFolderBounceEnabled"] ? [[prefs valueForKey:@"isFolderBounceEnabled"] boolValue] : NO );
     // FolderInitialVelocityValue
-    FolderSpeedValue = (prefs && [prefs objectForKey:@"FolderVelocityValue"] ? [[prefs valueForKey:@"FolderVelocityValue"] doubleValue] : 1 );
-    FolderDampingValue = (prefs && [prefs objectForKey:@"FolderDampingValue"] ? [[prefs valueForKey:@"FolderDampingValue"] doubleValue] : 1 );
-    FolderMassValue = (prefs && [prefs objectForKey:@"FolderMassValue"] ? [[prefs valueForKey:@"FolderMassValue"] doubleValue] : 1 );
-    FolderStiffnessValue = (prefs && [prefs objectForKey:@"FolderStiffnessValue"] ? [[prefs valueForKey:@"FolderStiffnessValue"] doubleValue] : 1 );
+    // FolderSpeedValue = (prefs && [prefs objectForKey:@"FolderVelocityValue"] ? [[prefs valueForKey:@"FolderVelocityValue"] doubleValue] : 1 );
+    FolderDampingValue = (prefs && [prefs objectForKey:@"FolderDampingValue"] ? [[prefs valueForKey:@"FolderDampingValue"] doubleValue] : 0 );
+    FolderMassValue = (prefs && [prefs objectForKey:@"FolderMassValue"] ? [[prefs valueForKey:@"FolderMassValue"] doubleValue] : 0 );
+    // FolderStiffnessValue = (prefs && [prefs objectForKey:@"FolderStiffnessValue"] ? [[prefs valueForKey:@"FolderStiffnessValue"] doubleValue] : 1 );
 
     //in-app values
-    inAppAnimation = (prefs && [prefs objectForKey:@"InAppAnimation"] ? [[prefs valueForKey:@"InAppAnimation"] boolValue] : NO );
+    inAppAnimationEnabled = (prefs && [prefs objectForKey:@"InAppAnimationEnabled"] ? [[prefs valueForKey:@"InAppAnimationEnabled"] boolValue] : NO );
+    inAppAnimationBounceEnabled = (prefs && [prefs objectForKey:@"isInAppBounceEnabled"] ? [[prefs valueForKey:@"isInAppBounceEnabled"] boolValue] : NO );
     // InitialVelocityValue
-    VelocityValue = (prefs && [prefs objectForKey:@"VelocityValue"] ? [[prefs valueForKey:@"VelocityValue"] doubleValue] : 1 );
-    DampingValue = (prefs && [prefs objectForKey:@"DampingValue"] ? [[prefs valueForKey:@"DampingValue"] doubleValue] : 1 );
-    MassValue = (prefs && [prefs objectForKey:@"MassValue"] ? [[prefs valueForKey:@"MassValue"] doubleValue] : 1 );
-    StiffnessValue = (prefs && [prefs objectForKey:@"StiffnessValue"] ? [[prefs valueForKey:@"StiffnessValue"] doubleValue] : 1 );
-    DurationValue = (prefs && [prefs objectForKey:@"DurationValue"] ? [[prefs valueForKey:@"DurationValue"] doubleValue] : 1 );
+    // VelocityValue = (prefs && [prefs objectForKey:@"VelocityValue"] ? [[prefs valueForKey:@"VelocityValue"] doubleValue] : 1 );
+    DampingValue = (prefs && [prefs objectForKey:@"DampingValue"] ? [[prefs valueForKey:@"DampingValue"] doubleValue] : 0 );
+    MassValue = (prefs && [prefs objectForKey:@"DurationMassValue"] ? [[prefs valueForKey:@"DurationMassValue"] doubleValue] : 0 );
+    // StiffnessValue = (prefs && [prefs objectForKey:@"StiffnessValue"] ? [[prefs valueForKey:@"StiffnessValue"] doubleValue] : 1 );
+    DurationValue = (prefs && [prefs objectForKey:@"DurationMassValue"] ? [[prefs valueForKey:@"DurationMassValue"] doubleValue] : 0 );
 
     //extra
     isNoiconflyEnable = (prefs && [prefs objectForKey:@"nofly"] ? [[prefs valueForKey:@"nofly"] boolValue] : NO );
@@ -96,6 +103,17 @@ static double reverseTurnOffSpeed(double input){
     double total = 0.91;
     return total - input;
 }
+
+static double reverseAppSpeedSliderValue(double input){
+    double total = 1.0;
+    return total - input;
+}
+
+static double reverseFolderSliderValue(double input){
+    double total = 1.0;
+    return total - input;
+}
+
 
 //App Open animation and bouncing
 %hook SBFFluidBehaviorSettings
@@ -186,36 +204,35 @@ static double reverseTurnOffSpeed(double input){
             %orig;
         }
     }
+
 %end
 
- //springboard folder speed (Took me a good while to figure what the 'F' stands for)
+//Springboard speed (mostly for folder but might affect something else on springboard too)
 %hook SBFAnimationSettings
 
     //folder starting speed
-    -(void)setInitialVelocity:(double)arg1{
-        %orig;
-    }
+    // -(void)setInitialVelocity:(double)arg1{
+    //     %orig;
+    // }
 
-    //folder speed
-    -(void)setSpeed:(double)arg1{
-        if(isInstantFolder){
-            %orig(arg1*100);        
-        }else{
-            if (isFolderAnimationEnabled){
-                %orig(arg1*FolderSpeed);
-            }else{
-                %orig;
-            }
-        }
-    }
+    // -(void)setSpeed:(double)arg1{
+    //     if(isInstantFolder){
+    //         %orig(arg1);        
+    //     }else{
+    //         if (isFolderAnimationEnabled){
+    //             %orig(arg1*FolderSpeedValue);
+    //         }else{
+    //             %orig;
+    //         }
+    //     }
+    // }
 
-    //folder ending speed
     -(void)setDamping:(double)arg1{
         if(isInstantFolder){
             %orig;
         }else{
             if(isFolderAnimationEnabled){
-                %orig(arg1*FolderDampingValue);
+                %orig(arg1*reverseFolderSliderValue(FolderDampingValue));
             }else{
                 %orig;
             }
@@ -225,30 +242,27 @@ static double reverseTurnOffSpeed(double input){
     //folder mass
     -(void)setMass:(double)arg1{
         if(isInstantFolder){
-            %orig(arg1*0.01);
+            %orig(arg1*0.0001);
         }else{
             if(isFolderAnimationEnabled){
-                %orig(arg1*FolderMassValue);
+                %orig(arg1*reverseFolderSliderValue(FolderMassValue));
             }else{
                 %orig;
             }
         }
     }
 
-    //folder ending duration
-    -(void)setStiffness:(double)arg1{
-        if(isInstantFolder){
-            %orig;
-        }else{
-            if(isFolderAnimationEnabled){
-                %orig(arg1*FolderStiffnessValue);
-            }else{
-                %orig;
-            }
-        }
-    }
-
-
+    // -(void)setStiffness:(double)arg1{
+    //     if(isInstantFolder){
+    //         %orig;
+    //     }else{
+    //         if(isFolderAnimationEnabled){
+    //             %orig(arg1*FolderStiffnessValue);
+    //         }else{
+    //             %orig;
+    //         }
+    //     }
+    // }
 
 %end
 
@@ -256,54 +270,65 @@ static double reverseTurnOffSpeed(double input){
 %hook CASpringAnimation
 
     //start speed
-    -(void)setInitialVelocity:(double)arg1{
-        %orig;
-    }
+    // -(void)setInitialVelocity:(double)arg1{
+    //     %orig;
+    // }
 
     //speed
-    - (void)setVelocity:(float)arg1{
-        if(inAppAnimation && !isOnSpringBoard){
-            %orig(arg1 * VelocityValue);
-        }else{
-            %orig;
-        }
-    }
+    // - (void)setVelocity:(double)arg1{
+    //     if(inAppAnimationEnabled){
+    //         %orig(arg1 * VelocityValue);
+    //     }else{
+    //         %orig(arg1);
+    //     }
+    // }
 
-    //ending duration
-    -(void)setStiffness:(double)arg1{
-        if(inAppAnimation && !isOnSpringBoard){
-            %orig(arg1 * StiffnessValue);
-        }else{
-            %orig;
-        }
-    }
+    // -(void)setStiffness:(double)arg1{
+    //     if(inAppAnimationEnabled){
+    //         %orig(arg1 * StiffnessValue);
+    //     }else{
+    //         %orig(arg1);
+    //     }
+    // }
 
     //mass
-    -(void)setMass:(double)arg1{
-        if(inAppAnimation && !isOnSpringBoard){
-            %orig(arg1 * MassValue);
+    -(void)setMass:(double)arg1{ //in app speed
+        if(inAppAnimationEnabled && !isOnSpringBoard){
+            %orig(arg1 * reverseAppSpeedSliderValue(MassValue));
         }else{
-            %orig;
+            %orig(arg1);
         }
     }
 
-    //ending speed
     -(void)setDamping:(double)arg1{
-        if(inAppAnimation && !isOnSpringBoard){
-            %orig(arg1 * DampingValue);
+        if(inAppAnimationEnabled && !isOnSpringBoard){
+            %orig(arg1 * reverseAppSpeedSliderValue(DampingValue));
         }else{
-            %orig;
+            %orig(arg1);
         }
     }
+
+    // - (void)setDuration:(double)arg1{
+    //     if(inAppAnimationEnabled && !isOnSpringBoard){
+    //         %orig(arg1 * 0.5);
+    //     }else{
+    //         %orig(arg1);
+    //     }
+    // }
 
 %end
 
+//In-App animation 2: electric boogaloo
 %hook CAAnimation
 
     //duration
-    -(void)setDuration:(double)arg1{
-        if(inAppAnimation && !isOnSpringBoard){
-            %orig(arg1 * DurationValue);
+   - (void)setDuration:(double)arg1{ //more in app speed but with more side effect 
+        if ([self isKindOfClass:[CASpringAnimationClass class]]) { //thanks fakeclockup
+            %orig(arg1);
+            return;
+        }
+        if(inAppAnimationEnabled){
+            %orig(arg1 * reverseAppSpeedSliderValue(DurationValue));
         }else{
             %orig;
         }
@@ -384,9 +409,10 @@ static double reverseTurnOffSpeed(double input){
 %end
 
 %ctor { //More pref
-	preferencesthings();
+    // NSLog(@"[Speedster] load test");
+    CASpringAnimationClass = NSClassFromString(@"CASpringAnimation");
+    // SBFAnimationSettingsClass = NSClassFromString(@"SBFAnimationSettings");
     isOnSpringBoard = [[[NSBundle mainBundle] bundleIdentifier] isEqual:@"com.apple.springboard"];
-	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL,
-    (CFNotificationCallback)preferencesthings, CFSTR("com.hoangdus.speedsterprefs-updated"), NULL, 
-    CFNotificationSuspensionBehaviorDeliverImmediately);
+	CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)preferencesthings, CFSTR("com.hoangdus.speedsterprefs-updated"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+	preferencesthings();
 }

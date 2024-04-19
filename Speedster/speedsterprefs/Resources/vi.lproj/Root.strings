@@ -6,37 +6,40 @@
 "Buy me a Fanta" = "Mua tôi 1 lon Fanta 🥤";
 
 
+"Damping" = "Độ nảy";
+
+
 "Duration" = "Thời gian hoạt ảnh";
-
-
-"Stiffness" = "Thời gian kết thúc";
-
-
-"Damping" = "Tốc độ kết thúc";
 
 
 "Extra" = "Cài đặt thêm";
 
 
-"FineTuneBounce" = "Tuỳ chỉnh sâu";
+"FineTuneBounce" = "Tuỳ chỉnh độ nảy bằng tay";
 
 
-"FineTuneSpeed" = "Tuỳ chỉnh sâu";
+"FineTuneSpeed" = "Tuỳ chỉnh tốc độ bằng tay";
 
 
-"FolderSpeed" = "Tốc độ thư mục";
+"FolderAnimation" = "Tốc độ thư mục";
 
 
-"Icon edit shaking" = "Icon run khi chỉnh vị trí";
+"FolderDamping" = "Độ nảy";
+
+
+"FolderMass" = "Trọng lượng hoạt ảnh";
+
+
+"Icon edit shaking" = "Icon rung khi chỉnh vị trí";
 
 
 "Icon unlock fly in" = "Icon bay vào khi mở khóa";
 
 
-"InAppAnimation" = "Hoạt ảnh trong app";
+"InAppAnimation" = "Tốc độ trong app";
 
 
-"InstantFolder" = "Hoạt ảnh mở thư mục ";
+"InstantFolder" = "Tắt hoạt ảnh mở thư mục";
 
 
 "Links" = "Liên kết";
@@ -51,7 +54,7 @@
 "Respring" = "Respring";
 
 
-"Respring to apply changes" = "Respring để áp dụng thay đổi";
+"Respring to apply changes" = "Respring để áp dụng thay đổi(Có thể phải làm 2 lần)";
 
 
 "Screen sleep(←faster|slower→)" = "Tốc độ tắt màn";
@@ -60,16 +63,16 @@
 "Screen wake" = "Tốc độ bật màn";
 
 
+"SideEffect" = "*Có 1 vài tắc dụng phụ nhỏ";
+
+
 "Sleep Wake Speed" = "Tốc độ bật tắt màn hình";
 
 
 "Source code" = "Mã nguồn";
 
 
-"Speed" = "Tốc độ";
-
-
-"Velocity" = "Tốc độ";
+"Speed" = "Tốc độ mở app";
 
 
 "Switcher homescreen zoom out" = "Icon zoom ra trong đa nghiệm";

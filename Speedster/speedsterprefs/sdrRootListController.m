@@ -12,8 +12,8 @@
 
 - (void)respring:(id)sender{ //handle the "respring" button
     pid_t pid;
-    const char *args[] = {"killall", "-9", "backboardd", NULL};
-    posix_spawn(&pid, "/var/jb/usr/bin/killall", NULL, NULL, (char *const *)args, NULL); 
+    // const char *args[] = {"killall", "-9", "backboardd", NULL};
+    posix_spawn(&pid, "/var/jb/usr/bin/sbreload", NULL, NULL, NULL, NULL); 
 }
 
 - (void)github{
@@ -46,7 +46,7 @@
     UILabel *subtitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 85, self.frame.size.width, 30)];
     subtitle.numberOfLines = 1;
     subtitle.font = [UIFont systemFontOfSize:20];
-    subtitle.text = @"By Hoangdus";
+    subtitle.text = @"By HoangDus";
     subtitle.textColor = [UIColor grayColor];
     subtitle.textAlignment = NSTextAlignmentCenter;
     [self addSubview:subtitle];

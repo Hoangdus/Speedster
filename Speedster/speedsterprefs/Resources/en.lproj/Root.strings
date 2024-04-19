@@ -6,25 +6,34 @@
 "Buy me a Fanta" = "Buy me a Fanta 🥤";
 
 
+"Damping" = "Bounce";
+
+
 "Duration" = "Duration";
-
-
-"Stiffness" = "Ending duration";
-
-
-"Damping" = "Ending speed";
 
 
 "Extra" = "Extra";
 
 
-"FineTuneBounce" = "Fine tune mode";
+"FineTuneBounce" = "Fine tune bounce";
 
 
-"FineTuneSpeed" = "Fine tune mode";
+"FineTuneSpeed" = "Fine tune speed";
 
 
-"FolderSpeed" = "Folder speed";
+"FolderAnimation" = "Folder speed";
+
+
+"FolderDamping" = "Bounce";
+
+
+"FolderMass" = "Speed";
+
+
+"FolderMassValue" = "";
+
+
+"FolderStiffness" = "Ending duration";
 
 
 "Icon edit shaking" = "Icon edit shaking";
@@ -33,7 +42,7 @@
 "Icon unlock fly in" = "Icon unlock fly in";
 
 
-"InAppAnimation" = "In app animation";
+"InAppAnimation" = "In app speed";
 
 
 "InstantFolder" = "Instant folder";
@@ -42,7 +51,7 @@
 "Links" = "Links";
 
 
-"Mass" = "Mass";
+"Mass" = "Speed";
 
 
 "My twitter" = "My twitter";
@@ -60,16 +69,16 @@
 "Screen wake" = "Screen wake";
 
 
+"SideEffect" = "*Has small side effects";
+
+
 "Sleep Wake Speed" = "Screen sleep wake speed";
 
 
 "Source code" = "Source code";
 
 
-"Speed" = "Speed";
-
-
-"Velocity" = "Speed";
+"Speed" = "App open speed";
 
 
 "Switcher homescreen zoom out" = "Switcher icon zoom out";
