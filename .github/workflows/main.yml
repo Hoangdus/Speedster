@@ -1,0 +1,26 @@
+name: Build Tweak
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Theos
+        uses: meos/setup-theos@v1
+
+      - name: Build Package
+        run: |
+          make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Speedster-deb
+          path: packages/*.deb
