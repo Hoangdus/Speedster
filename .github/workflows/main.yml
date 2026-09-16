@@ -13,6 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Dependencies
+        run: |
+          brew install ldid xz
+
       - name: Setup Theos
         run: |
           git clone --recursive https://github.com/theos/theos.git ~/theos
@@ -20,12 +24,11 @@ jobs:
       - name: Setup SDK
         run: |
           git clone --depth=1 https://github.com/theos/sdks.git /tmp/theos-sdks
-          cp -R /tmp/theos-sdks/iPhoneOS*.sdk ~/theos/sdks/
+          cp -R /tmp/theos-sdks/*.sdk ~/theos/sdks/
 
       - name: Build Package
         run: |
           export THEOS=~/theos
-          make clean
           make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
 
       - name: Upload Artifact
