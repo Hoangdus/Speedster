@@ -27,6 +27,7 @@ jobs:
           cp -R /tmp/theos-sdks/*.sdk ~/theos/sdks/
 
       - name: Build Package
+        working-directory: Speedster
         run: |
           export THEOS=~/theos
           make package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
@@ -35,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Speedster-deb
-          path: packages/*.deb
+          path: Speedster/packages/*.deb
